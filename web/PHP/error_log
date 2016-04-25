@@ -1,0 +1,1 @@
+[21-Dec-2015 01:27:42 UTC] PHP Warning:  mysql_close() expects parameter 1 to be resource, null given in /home/ricardoi/public_html/listamercado/php/desconex.php on line 2

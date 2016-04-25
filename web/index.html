@@ -1,0 +1,151 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+<title>Lista de super mercado</title>
+<link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
+<link href="estilos.css" rel="stylesheet" type="text/css"/>
+<script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+<script src="jquery-mobile/funciones.js" type="text/javascript"></script>
+<script src="jquery-mobile/phonegap-1.0.0.js" type="text/javascript"></script>
+</head> 
+<body> 
+
+<!--Pagina de inicio!-->
+<div data-role="page" id="home">
+	<div data-role="header" data-theme="a">
+		<h1><img src="imagenes/logo.png" class="imagen_auto_escalable"></h1>
+	</div>
+	<div data-role="content">
+		<form id="correo_env">
+        	<div data-role="fieldcontain">
+            	<label for="nomb_pro">Nombre del Producto:</label>
+                <br />
+                <input type="text" name="nomb_pro" id="add_pro"  placeholder="DEBE INGRESAR UN NOMBRE DEL PRODUCTO" value=""/>
+             </div>
+                <div data-role="fieldcontain">
+                  <label for="unidad" class="select">Unidad del Producto:</label>
+                  <br />
+                  <select name="unidad" id="add_unidad">
+                    <option value="Kg">Kilogramos</option>
+                    <option value="g">Gramos</option>
+                    <option value="lts">Litros</option>
+                  </select>
+                </div>
+             	<input name="add_producto" type="button" value="Enviar" onClick="add_product();" data-rel="dialog">
+       </form>
+       
+	</div>
+ 	<div data-role="footer" data-position="fixed" dataid="piedepagina" data-theme="a">
+    	<div data-role="navbar">
+      		<ul>
+        		<li><a href="#" data-icon="home" data-transition="flip" style="color:#66ff00">Inicio</a></li>
+        		<li><a href="#info" data-icon="info" data-transition="flip" style="color:#66ff00">Informaci&oacute;n</a></li>
+        		<li><a href="#contacto" data-icon="email" data-transition="flip" onClick="limpieza();" style="color:#66ff00">Contacto</a></li>
+      		</ul>
+    	</div>
+       <div class="derechos_autor">
+       		&#169 Todos los derechos reservados a Ricardo Lugaresi, rflugaresir@gmail.com
+       </div>
+  	</div>
+</div>
+
+
+<!--Pagina informacion!-->
+<div data-role="page" id="info">
+	<div data-role="header" data-theme="a">
+		<h1><img src="imagenes/logo.png" class="imagen_auto_escalable"></h1>
+	</div>
+	<div data-role="content">
+		<div>
+			Desarrollo administrativo, parte del desarrollo que se encarga de introducir nuevos productos.</p>
+            
+            Proceso realizado por el usuario desde la web, logrando que se conecte en la base de datos y pueda agregar nuevos productos que inmediatamente son cargados, manteniendo la base de datos actualizada en todo momento.</br>
+        </div>	
+	</div>
+ 	<div data-role="footer" data-position="fixed" dataid="piedepagina" data-theme="a">
+    	<div data-role="navbar">
+      		<ul>
+        		<li><a href="#home" data-icon="home" data-transition="flip" style="color:#66ff00">Inicio</a></li>
+        		<li><a href="#" data-icon="info" data-transition="flip" style="color:#66ff00">Informaci&oacute;n</a></li>
+        		<li><a href="#contacto" data-icon="email" data-transition="flip" onClick="limpieza();" style="color:#66ff00">Contacto</a></li>
+      		</ul>
+    	</div>
+        <div class="derechos_autor">
+       		&#169 Todos los derechos reservados a Ricardo Lugaresi, rflugaresir@gmail.com
+        </div>
+  	</div>
+</div>
+
+<!--Pagina contacto!-->
+<div data-role="page" id="contacto">
+	<div data-role="header" data-theme="a">
+		<h1><img src="imagenes/logo.png" class="imagen_auto_escalable"></h1>
+	</div>
+	<div data-role="content">
+		<form id="correo_env">
+        	<div data-role="fieldcontain">
+            	<label for="email">Correo Electronico:</label>
+                <br />
+                <input type="text" name="email" id="email_contacto" value=""/>
+             </div>
+             <div data-role="fieldcontain">
+             	<label for="mensaje">Comentarios:</label>
+                <br />
+                <textarea cols="40" rows="8" name="mensaje" id="mensaje_contacto" ></textarea>
+             </div>
+             	<input name="env_correo" type="button" value="Enviar" onClick="enviar_correo();" data-rel="dialog">
+       </form>
+    </div>	
+	<div data-role="footer" data-position="fixed" dataid="piedepagina" data-theme="a">
+    	<div data-role="navbar">
+      		<ul>
+        		<li><a href="#home" data-icon="home" data-transition="flip" style="color:#66ff00">Inicio</a></li>
+        		<li><a href="#info" data-icon="info" data-transition="flip" style="color:#66ff00">Informaci&oacute;n</a></li>
+        		<li><a href="#" data-icon="email" data-transition="flip" onClick="limpieza();" style="color:#66ff00">Contacto</a></li>
+      		</ul>
+    	</div>
+        <div class="derechos_autor">
+       		&#169 Todos los derechos reservados a Ricardo Lugaresi, rflugaresir@gmail.com
+        </div>
+  	</div>
+</div>
+
+<!--pagina de mensaje de error!-->
+<div data-role="page" id="error">
+	<div data-role="header">
+		<h1>ERROR!</h1>
+	</div>
+	<div data-role="content">
+    	<div class="fondo">
+            <div class="dialogo">
+            	<div class="titulo_error"><h2 id="titulo_error"><!--titulo de error!--></h2></div>
+            	<h3 id="mensaje_error"><!--mensaje de error!--></h3>
+                <a href="#" data-rel="back" data-role="button">OK</a>
+            </div>
+         </div>
+	</div>
+</div>
+   
+<!--pagina de afirmacion!-->
+<div data-role="page" id="confirmar">
+	<div data-role="header">
+		<h1>CONFIRMACION!</h1>
+	</div>
+	<div data-role="content">
+    	<div class="fondo">
+            <div class="dialogo">
+            	<div class="titulo_error"><h2 id="titulo_afirm"><!--titulo de error!--></h2></div>
+            	<h3 id="mensaje_afirm"><!--mensaje de error!--></h3>
+                <a href="#home" data-role="button" data-transition="slideup">OK</a>
+            </div>
+         </div>
+	</div>
+</div>
+
+
+</body>
+</html>
+
